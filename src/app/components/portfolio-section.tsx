@@ -23,8 +23,8 @@ const portfolioItems: PortfolioItem[] = [
     tags: ['E-commerce', 'React', 'Vercel', 'UI/UX'],
     link: 'https://cyber-store-yourpage.vercel.app/',
     // COLOQUE AQUI SUAS IMAGENS REAIS DEPOIS
-    mockupDesktop: '/cyberstoreDesk.png',
-    mockupMobile: '/cyberstorePhone.jpeg'
+    mockupDesktop: 'src/app/components/cyberstoreDesk.png',
+    mockupMobile: 'src/app/components/cyberstorePhone.jpeg'
   },
   {
     title: 'Advocacia Mendes & Souza',
