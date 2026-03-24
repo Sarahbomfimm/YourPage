@@ -6,7 +6,7 @@ export function CTASection() {
     <section className="py-32 relative overflow-hidden">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-600"></div>
-      
+
       {/* Animated orbs */}
       <motion.div
         animate={{
@@ -20,7 +20,7 @@ export function CTASection() {
         }}
         className="absolute top-0 left-0 w-96 h-96 bg-purple-400/30 rounded-full blur-3xl"
       ></motion.div>
-      
+
       <motion.div
         animate={{
           scale: [1.2, 1, 1.2],
@@ -84,7 +84,7 @@ export function CTASection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg mb-10 text-white/80 max-w-2xl mx-auto"
           >
-            Crie uma presença digital estratégica, elegante e profissional que 
+            Crie uma presença digital estratégica, elegante e profissional que
             transforma visitantes em clientes e fortalece sua marca no mercado.
           </motion.p>
 
@@ -98,6 +98,7 @@ export function CTASection() {
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)" }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 rounded-xl bg-white text-purple-600 font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transition-shadow"
             >
               Começar agora
@@ -107,6 +108,10 @@ export function CTASection() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const message = encodeURIComponent("Olá, gostaria de falar com um especialista.");
+                window.open(`https://wa.me/5582988736580?text=${message}`, '_blank');
+              }}
               className="px-8 py-4 rounded-xl border-2 border-white/30 backdrop-blur-sm font-semibold hover:bg-white/10 transition-colors"
             >
               Falar com especialista
@@ -126,7 +131,7 @@ export function CTASection() {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-white"></div>
-              Entrega em até 15 dias
+              Entrega rápida
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-white"></div>

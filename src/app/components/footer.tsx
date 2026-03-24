@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Instagram, Linkedin, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -15,13 +15,15 @@ export function Footer() {
               </div>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md leading-relaxed">
-              Criamos presença digital estratégica e profissional para negócios locais. 
+              Criamos presença digital estratégica e profissional para negócios locais.
               Sites elegantes que atraem clientes e fortalecem sua marca.
             </p>
             <div className="flex gap-4">
               <motion.a
                 whileHover={{ scale: 1.1, y: -2 }}
-                href="#"
+                href="https://www.instagram.com/yourpage.tech?igsh=MTR6c3J4MzU4YXozaQ=="
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-accent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 flex items-center justify-center transition-colors hover:text-white"
               >
                 <Instagram className="w-5 h-5" />
@@ -35,10 +37,12 @@ export function Footer() {
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.1, y: -2 }}
-                href="#"
+                href="https://wa.me/5582988736580?text=Ol%C3%A1%2C%20vim%20pelo%20site%20YourPage."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-accent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 flex items-center justify-center transition-colors hover:text-white"
               >
-                <Facebook className="w-5 h-5" />
+                <MessageCircle className="w-5 h-5" />
               </motion.a>
             </div>
           </div>
@@ -76,15 +80,19 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <Mail className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                <span>contato@yourpage.com.br</span>
+                <a href="mailto:yourpage.business.tech@gmail.com" className="hover:text-foreground transition-colors">yourpage.business.tech@gmail.com</a>
               </li>
               <li className="flex items-start gap-3 text-muted-foreground">
                 <Phone className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                <span>(11) 99999-9999</span>
+                <a
+                  href="https://wa.me/5582988736580?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors">(82) 98873-6580</a>
               </li>
               <li className="flex items-start gap-3 text-muted-foreground">
                 <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                <span>São Paulo, SP</span>
+                <span>Maceió, AL</span>
               </li>
             </ul>
           </div>

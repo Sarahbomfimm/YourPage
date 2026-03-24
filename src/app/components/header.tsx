@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from './theme-provider';
-import { useState } from 'react';
+import { useState, MouseEvent } from 'react';
 
 export function Header() {
   const { theme, setTheme } = useTheme();
@@ -11,8 +11,33 @@ export function Header() {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
+  const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault(); // Impede o salto padrão do navegador
+    setIsMenuOpen(false); // Fecha o menu
+
+    const element = document.querySelector(targetId);
+    if (element) {
+      const headerOffset = 85; // Altura aproximada do header para não tapar o conteúdo
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+  const handleWhatsAppContact = () => {
+    const message = encodeURIComponent("Olá, gostaria de falar com um especialista.");
+    window.open(`https://wa.me/5582988736580?text=${message}`, '_blank');
   };
 
   return (
@@ -25,7 +50,9 @@ export function Header() {
       <div className="container mx-auto px-6 py-5 flex items-center justify-between">
         <motion.div
           whileHover={{ scale: 1.05 }}
+          onClick={handleScrollToTop}
           className="flex items-center gap-2"
+          style={{ cursor: 'pointer' }}
         >
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 blur-lg opacity-50"></div>
@@ -36,10 +63,34 @@ export function Header() {
         </motion.div>
 
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#beneficios" className="text-foreground/80 hover:text-foreground transition-colors">Benefícios</a>
-          <a href="#servicos" className="text-foreground/80 hover:text-foreground transition-colors">Serviços</a>
-          <a href="#portfolio" className="text-foreground/80 hover:text-foreground transition-colors">Portfólio</a>
-          <a href="#depoimentos" className="text-foreground/80 hover:text-foreground transition-colors">Depoimentos</a>
+          <a
+            href="#beneficios"
+            onClick={(e) => handleNavClick(e, '#beneficios')}
+            className="text-foreground/80 hover:text-foreground transition-colors"
+          >
+            Benefícios
+          </a>
+          <a
+            href="#servicos"
+            onClick={(e) => handleNavClick(e, '#servicos')}
+            className="text-foreground/80 hover:text-foreground transition-colors"
+          >
+            Serviços
+          </a>
+          <a
+            href="#portfolio"
+            onClick={(e) => handleNavClick(e, '#portfolio')}
+            className="text-foreground/80 hover:text-foreground transition-colors"
+          >
+            Portfólio
+          </a>
+          <a
+            href="#planos"
+            onClick={(e) => handleNavClick(e, '#planos')}
+            className="text-foreground/80 hover:text-foreground transition-colors"
+          >
+            Planos
+          </a>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -51,10 +102,11 @@ export function Header() {
           >
             {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </motion.button>
-          
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={handleWhatsAppContact}
             className="hidden md:block px-6 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-shadow"
           >
             Falar com especialista
@@ -82,33 +134,33 @@ export function Header() {
             <nav className="container mx-auto px-6 py-6 flex flex-col gap-4">
               <a
                 href="#beneficios"
-                onClick={closeMenu}
+                onClick={(e) => handleNavClick(e, '#beneficios')}
                 className="text-foreground/80 hover:text-foreground transition-colors py-2"
               >
                 Benefícios
               </a>
               <a
                 href="#servicos"
-                onClick={closeMenu}
+                onClick={(e) => handleNavClick(e, '#servicos')}
                 className="text-foreground/80 hover:text-foreground transition-colors py-2"
               >
                 Serviços
               </a>
               <a
                 href="#portfolio"
-                onClick={closeMenu}
+                onClick={(e) => handleNavClick(e, '#portfolio')}
                 className="text-foreground/80 hover:text-foreground transition-colors py-2"
               >
                 Portfólio
               </a>
               <a
-                href="#depoimentos"
-                onClick={closeMenu}
+                href="#planos"
+                onClick={(e) => handleNavClick(e, '#planos')}
                 className="text-foreground/80 hover:text-foreground transition-colors py-2"
               >
-                Depoimentos
+                Planos
               </a>
-              <button className="mt-4 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium">
+              <button onClick={handleWhatsAppContact} className="mt-4 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium">
                 Falar com especialista
               </button>
             </nav>

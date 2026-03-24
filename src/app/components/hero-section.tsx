@@ -3,10 +3,10 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-transparent"></div>
-      
+
       {/* Animated glow orbs */}
       <motion.div
         animate={{
@@ -20,7 +20,7 @@ export function HeroSection() {
         }}
         className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/30 rounded-full blur-3xl"
       ></motion.div>
-      
+
       <motion.div
         animate={{
           scale: [1.2, 1, 1.2],
@@ -65,7 +65,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto"
           >
-            Sites profissionais, elegantes e otimizados que atraem mais clientes 
+            Sites profissionais, elegantes e otimizados que atraem mais clientes
             e fortalecem sua credibilidade no mercado digital.
           </motion.p>
 
@@ -76,6 +76,7 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <motion.button
+              onClick={() => document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' })}
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(124, 58, 237, 0.3)" }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
@@ -85,6 +86,7 @@ export function HeroSection() {
             </motion.button>
 
             <motion.button
+              onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 rounded-xl border-2 border-border hover:border-purple-600/50 font-semibold transition-colors"
