@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './components/theme-provider';
 import { Header } from './components/header';
 import { HeroSection } from './components/hero-section';
@@ -8,23 +9,37 @@ import { TestimonialsSection } from './components/testimonials-section';
 import { CTASection } from './components/cta-section';
 import { Footer } from './components/footer';
 import { ScrollToTop } from './components/scroll-to-top';
+import BriefingPage from './components/BriefingPage';
+
+// Criamos um componente para a Home com todas as seções
+function HomePage() {
+  return (
+    <>
+      <Header />
+      <HeroSection />
+      <BenefitsSection />
+      <ServicesSection />
+      <PortfolioSection />
+      <TestimonialsSection />
+      <CTASection />
+      <Footer />
+      <ScrollToTop />
+    </>
+  );
+}
 
 function App() {
   return (
     <ThemeProvider defaultTheme="dark">
-      <div className="min-h-screen bg-background text-foreground antialiased">
-        <Header />
-        <main>
-          <HeroSection />
-          <BenefitsSection />
-          <ServicesSection />
-          <PortfolioSection />
-          <TestimonialsSection />
-          <CTASection />
-        </main>
-        <Footer />
-        <ScrollToTop />
-      </div>
+      <Router>
+        <Routes>
+          {/* Rota para a página inicial */}
+          <Route path="/" element={<HomePage />} />
+          
+          {/* Rota para o formulário de briefing */}
+          <Route path="/briefing" element={<BriefingPage />} />
+        </Routes>
+      </Router>
     </ThemeProvider>
   );
 }

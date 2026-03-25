@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Check, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const plans = [
   {
@@ -46,12 +47,13 @@ const plans = [
   },
 ];
 
-const handlePlanSelection = (planName: string) => {
-  const message = encodeURIComponent(`Olá, escolhi o ${planName} e gostaria de começar agora.`);
-  window.open(`https://wa.me/5582988736580?text=${message}`, '_blank');
-};
-
 export function TestimonialsSection() {
+  const navigate = useNavigate();
+
+  const handlePlanSelection = (planName: string) => {
+    navigate(`/briefing?plan=${encodeURIComponent(planName)}`);
+  };
+
   return (
     <section id="planos" className="py-32 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-purple-600/5 to-transparent"></div>
