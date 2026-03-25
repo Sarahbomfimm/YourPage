@@ -99,7 +99,7 @@ export function CTASection() {
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)" }}
               whileTap={{ scale: 0.95 }}
               onClick={() => document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 rounded-xl bg-white text-purple-600 font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transition-shadow"
+              className="px-8 py-4 rounded-xl bg-white text-purple-600 font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transition-shadow cursor-pointer"
             >
               Começar agora
               <ArrowRight className="w-5 h-5" />
@@ -112,7 +112,7 @@ export function CTASection() {
                 const message = encodeURIComponent("Olá, gostaria de falar com um especialista.");
                 window.open(`https://wa.me/5582988736580?text=${message}`, '_blank');
               }}
-              className="px-8 py-4 rounded-xl border-2 border-white/30 backdrop-blur-sm font-semibold hover:bg-white/10 transition-colors"
+              className="px-8 py-4 rounded-xl border-2 border-white/30 backdrop-blur-sm font-semibold hover:bg-white/10 transition-colors cursor-pointer"
             >
               Falar com especialista
             </motion.button>

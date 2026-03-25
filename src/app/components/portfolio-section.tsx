@@ -145,7 +145,7 @@ export function PortfolioSection() {
             >
               <button
                 onClick={() => setSelectedItem(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-accent hover:bg-accent/80 transition-colors"
+                className="absolute top-4 right-4 p-2 rounded-full bg-accent hover:bg-accent/80 transition-colors cursor-pointer"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -169,7 +169,7 @@ export function PortfolioSection() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all cursor-pointer"
                   >
                     Acessar Projeto Online
                     <ArrowRight className="w-5 h-5" />

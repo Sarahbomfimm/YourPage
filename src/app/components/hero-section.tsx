@@ -79,7 +79,7 @@ export function HeroSection() {
               onClick={() => document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' })}
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(124, 58, 237, 0.3)" }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+              className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30 cursor-pointer"
             >
               Quero mais clientes online
               <ArrowRight className="w-5 h-5" />
@@ -89,7 +89,7 @@ export function HeroSection() {
               onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 rounded-xl border-2 border-border hover:border-purple-600/50 font-semibold transition-colors"
+              className="px-8 py-4 rounded-xl border-2 border-border hover:border-purple-600/50 font-semibold transition-colors cursor-pointer"
             >
               Ver projetos
             </motion.button>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, ArrowRight, Send, CheckCircle2, Loader2, Home, Save } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Send, CheckCircle2, Loader2, Home, Save, X, AlertCircle, Check } from 'lucide-react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export default function BriefingPage() {
@@ -12,6 +12,8 @@ export default function BriefingPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSaved, setIsSaved] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
   const [formData, setFormData] = useState({
     empresa: '', segmento: '', contato: '',
     objetivos: [] as string[], objetivoOutro: '',
@@ -26,6 +28,14 @@ export default function BriefingPage() {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Limpa o erro automaticamente após alguns segundos
+  useEffect(() => {
+    if (showError) {
+      const timer = setTimeout(() => setShowError(false), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [showError]);
 
   const steps = [
     {
@@ -156,8 +166,9 @@ export default function BriefingPage() {
   const handleNext = () => {
     if (validateStep()) {
       setCurrentStep(currentStep + 1);
+      setShowError(false);
     } else {
-      alert("Por favor, preencha os campos obrigatórios antes de prosseguir.");
+      setShowError(true);
     }
   };
 
@@ -190,11 +201,15 @@ export default function BriefingPage() {
       
       // Simulação de delay de rede
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      alert("Briefing enviado com sucesso! Entraremos em contato em breve.");
-      navigate('/');
+
+      // Efeito sonoro e animação de sucesso
+      const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+      audio.play().catch(() => {}); // Catch para evitar erro se o browser bloquear auto-play
+      setIsSuccess(true);
+
+      setTimeout(() => navigate('/'), 4000);
     } catch (error) {
-      alert("Ocorreu um erro ao enviar. Tente novamente.");
+      setShowError(true);
     } finally {
       setIsSending(false);
     }
@@ -223,7 +238,7 @@ export default function BriefingPage() {
       <div className="max-w-3xl mx-auto mb-12 flex items-center justify-between">
         <button 
           onClick={() => navigate('/')}
-          className="flex items-center gap-2 text-sm font-medium hover:text-purple-600 transition-colors"
+          className="flex items-center gap-2 text-sm font-medium hover:text-purple-600 transition-colors cursor-pointer"
         >
           <Home className="w-4 h-4" />
           Voltar ao menu inicial
@@ -275,7 +290,7 @@ export default function BriefingPage() {
             setIsSaved(false);
           }}
           disabled={currentStep === 0}
-          className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all ${currentStep === 0 ? 'opacity-0 pointer-events-none' : 'hover:bg-accent'}`}
+          className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all cursor-pointer ${currentStep === 0 ? 'opacity-0 pointer-events-none' : 'hover:bg-accent'}`}
         >
           <ArrowLeft className="w-5 h-5" />
           Voltar
@@ -286,7 +301,7 @@ export default function BriefingPage() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={handleNext}
-            className="flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold shadow-lg shadow-purple-500/20"
+            className="flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold shadow-lg shadow-purple-500/20 cursor-pointer"
           >
             Próxima pergunta
             <ArrowRight className="w-5 h-5" />
@@ -295,8 +310,15 @@ export default function BriefingPage() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => validateStep() ? setIsSaved(true) : alert("Preencha os campos antes de salvar.")}
-            className="flex items-center gap-2 px-10 py-4 rounded-xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-500/20"
+            onClick={() => {
+              if (validateStep()) {
+                setIsSaved(true);
+                setShowError(false);
+              } else {
+                setShowError(true);
+              }
+            }}
+            className="flex items-center gap-2 px-10 py-4 rounded-xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-500/20 cursor-pointer"
           >
             <Save className="w-5 h-5" />
             Salvar respostas
@@ -307,7 +329,7 @@ export default function BriefingPage() {
             whileTap={{ scale: 0.95 }}
             onClick={handleSubmit}
             disabled={isSending}
-            className="flex items-center gap-2 px-10 py-4 rounded-xl bg-green-600 text-white font-bold shadow-lg shadow-green-500/20 disabled:opacity-50"
+            className="flex items-center gap-2 px-10 py-4 rounded-xl bg-green-600 text-white font-bold shadow-lg shadow-green-500/20 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
           >
             {isSending ? (
               <>Enviando... <Loader2 className="w-5 h-5 animate-spin" /></>
@@ -317,6 +339,67 @@ export default function BriefingPage() {
           </motion.button>
         )}
       </div>
+
+      {/* Aviso de erro sofisticado (Toast) */}
+      <AnimatePresence>
+        {showError && (
+          <motion.div
+            initial={{ opacity: 0, y: -50, x: "-50%" }}
+            animate={{ opacity: 1, y: 0, x: "-50%" }}
+            exit={{ opacity: 0, y: -50, x: "-50%" }}
+            className="fixed top-10 left-1/2 z-[100] flex items-center gap-4 px-6 py-4 rounded-2xl bg-card border border-purple-600/50 shadow-2xl shadow-purple-500/20 backdrop-blur-xl min-w-[320px]"
+          >
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-purple-600/20 text-purple-600 shrink-0">
+              <AlertCircle className="w-6 h-6" />
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-bold text-foreground">Ação necessária</p>
+              <p className="text-xs text-muted-foreground">Preencha os campos obrigatórios para continuar.</p>
+            </div>
+            <button onClick={() => setShowError(false)} className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
+              <X className="w-4 h-4" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Modal de Sucesso Centralizado */}
+      <AnimatePresence>
+        {isSuccess && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-background/80 backdrop-blur-md p-6"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              className="bg-card border border-purple-600/30 p-10 rounded-3xl shadow-2xl shadow-purple-500/20 text-center max-w-sm w-full relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-purple-600"></div>
+              
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 200, damping: 10, delay: 0.2 }}
+                className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/40"
+              >
+                <Check className="w-10 h-10 text-white" strokeWidth={3} />
+              </motion.div>
+
+              <h2 className="text-2xl font-bold mb-2">Briefing Enviado!</h2>
+              <p className="text-muted-foreground mb-6">
+                Suas respostas foram recebidas. Entraremos em contato em breve para dar vida ao seu projeto.
+              </p>
+
+              <div className="flex items-center justify-center gap-2 text-sm text-purple-600 font-medium animate-pulse">
+                Redirecionando para a Home...
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl" />
