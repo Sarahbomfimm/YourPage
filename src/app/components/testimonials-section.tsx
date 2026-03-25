@@ -18,7 +18,7 @@ const plans = [
   {
     name: 'Pacote Premium',
     description: 'A partir de:',
-    price: 'R$1.800,00',
+    price: 'R$ 1.800,00',
     monthly: 'Mensalidade R$400–600',
     features: [
       'Site ou e-commerce simples',
@@ -32,7 +32,7 @@ const plans = [
   {
     name: 'Pacote Full',
     description: 'A partir de:',
-    price: 'R$2.500,00',
+    price: 'R$ 2.500,00',
     monthly: 'Mensalidade R$600–800',
     features: [
       'Site',
