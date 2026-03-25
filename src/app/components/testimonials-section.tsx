@@ -116,7 +116,7 @@ export function TestimonialsSection() {
               </ul>
 
 
-              <button onClick={() => handlePlanSelection(plan.name)} className={`w-full py-3 rounded-xl font-bold transition-all ${plan.highlight ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90' : 'bg-secondary hover:bg-secondary/80'}`}>
+              <button onClick={() => handlePlanSelection(plan.name)} className={`cursor-pointer flex items-center justify-center w-full py-3 rounded-xl font-bold transition-all ${plan.highlight ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90' : 'bg-secondary hover:bg-secondary/80'}`}>
                 Começar Agora
               </button>
             </motion.div>
