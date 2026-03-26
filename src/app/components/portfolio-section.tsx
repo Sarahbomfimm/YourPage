@@ -19,7 +19,7 @@ const portfolioItems: PortfolioItem[] = [
     title: 'CyberStore',
     category: 'E-commerce',
     description: 'Loja de e-commerce de eletrônicos completa com design moderno e alta conversão.',
-    image: 'public/cyberstoreDesk.png',
+    image: '/cyberstoreDesk.png',
     tags: ['E-commerce', 'React', 'Vercel', 'UI/UX'],
     link: 'https://cyber-store-yourpage.vercel.app/',
     
