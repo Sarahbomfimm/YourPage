@@ -19,19 +19,22 @@ const portfolioItems: PortfolioItem[] = [
     title: 'CyberStore',
     category: 'E-commerce',
     description: 'Loja de e-commerce de eletrônicos completa com design moderno e alta conversão.',
-    image: 'https://images.unsplash.com/photo-1685040235380-a42a129ade4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjByZXN0YXVyYW50JTIwaW50ZXJpb3J8ZW58MXx8fHwxNzcwODQ0NjA2fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'public/cyberstoreDesk.png',
     tags: ['E-commerce', 'React', 'Vercel', 'UI/UX'],
     link: 'https://cyber-store-yourpage.vercel.app/',
-    // COLOQUE AQUI SUAS IMAGENS REAIS DEPOIS
+    
     mockupDesktop: '/cyberstoreDesk.png',
     mockupMobile: '/cyberstorePhone.jpeg'
   },
   {
-    title: 'Advocacia Mendes & Souza',
+    title: 'Justiça e Direito',
     category: 'Site Profissional',
     description: 'Plataforma institucional que transmite autoridade e profissionalismo.',
-    image: 'https://images.unsplash.com/photo-1711720743865-10787dd6934a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBvZmZpY2UlMjBidWlsZGluZ3xlbnwxfHx8fDE3NzA4NjM5MTR8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '',
     tags: ['Corporativo', 'Minimalista', 'Conversão'],
+    link: '',
+    mockupDesktop: '',
+    mockupMobile: '',
   },
   {
     title: 'Tech Solutions Hub',
@@ -39,6 +42,9 @@ const portfolioItems: PortfolioItem[] = [
     description: 'Landing page focada em conversão para captação de leads B2B.',
     image: 'https://images.unsplash.com/photo-1728598909887-2d983a8889b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWIlMjBkZXNpZ24lMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzcwODY2NzkwfDA&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['Alta conversão', 'Analytics', 'Otimizado'],
+    link:'',
+    mockupDesktop: '',
+    mockupMobile: '',
   },
   {
     title: 'Clínica Vita Saúde',
@@ -46,6 +52,9 @@ const portfolioItems: PortfolioItem[] = [
     description: 'Site institucional com gestão de anúncios Google Ads.',
     image: 'https://images.unsplash.com/photo-1609941535028-83e3b0291aae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwd2Vic2l0ZSUyMG1vY2t1cCUyMGxhcHRvcHxlbnwxfHx8fDE3NzA5NTIyNTR8MA&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['Saúde', 'Agendamento', 'Marketing'],
+    link:'',
+    mockupDesktop: '',
+    mockupMobile: '',
   },
 ];
 

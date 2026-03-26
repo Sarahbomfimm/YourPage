@@ -101,7 +101,7 @@ export function CTASection() {
               onClick={() => document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-4 rounded-xl bg-white text-purple-600 font-semibold flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transition-shadow cursor-pointer"
             >
-              Começar agora
+              Solicite seu orçamento hoje
               <ArrowRight className="w-5 h-5" />
             </motion.button>
 

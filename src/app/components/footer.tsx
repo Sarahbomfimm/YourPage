@@ -67,8 +67,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#depoimentos" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Depoimentos
+                <a href="#planos" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Planos
                 </a>
               </li>
             </ul>

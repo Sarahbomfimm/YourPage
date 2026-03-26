@@ -390,11 +390,11 @@ export default function BriefingPage() {
 
               <h2 className="text-2xl font-bold mb-2">Briefing Enviado!</h2>
               <p className="text-muted-foreground mb-6">
-                Suas respostas foram recebidas. Entraremos em contato em breve para dar vida ao seu projeto.
+                Suas respostas foram recebidas! Entraremos em contato em breve para dar vida ao seu projeto.
               </p>
 
               <div className="flex items-center justify-center gap-2 text-sm text-purple-600 font-medium animate-pulse">
-                Redirecionando para a Home...
+                Voltando ao menu inicial...
               </div>
             </motion.div>
           </motion.div>
