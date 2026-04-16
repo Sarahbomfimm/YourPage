@@ -15,8 +15,9 @@ export function Footer() {
               </div>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md leading-relaxed">
-              Criamos presença digital estratégica e profissional para negócios locais.
-              Sites elegantes que atraem clientes e fortalecem sua marca.
+              A YourPage é uma agência de tecnologia em <strong>Maceió/AL</strong> especializada em 
+              <strong>criação de sites profissionais</strong>, Landing Pages de alta conversão e 
+              gestão de tráfego pago para empresas que buscam escalar suas vendas online.
             </p>
             <div className="flex gap-4">
               <motion.a

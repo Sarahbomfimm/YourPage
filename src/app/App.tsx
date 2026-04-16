@@ -9,6 +9,7 @@ import { TestimonialsSection } from './components/testimonials-section';
 import { CTASection } from './components/cta-section';
 import { Footer } from './components/footer';
 import { ScrollToTop } from './components/scroll-to-top';
+import { CookieBanner } from './components/cookie-banner';
 import BriefingPage from './components/BriefingPage';
 
 // Criamos um componente para a Home com todas as seções
@@ -39,6 +40,7 @@ function App() {
           {/* Rota para o formulário de briefing */}
           <Route path="/briefing" element={<BriefingPage />} />
         </Routes>
+        <CookieBanner />
       </Router>
     </ThemeProvider>
   );

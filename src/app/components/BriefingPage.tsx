@@ -14,13 +14,10 @@ export default function BriefingPage() {
   const [isSending, setIsSending] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
-    empresa: '', segmento: '', contato: '',
+    empresa: '', contato: '',
     objetivos: [] as string[], objetivoOutro: '',
-    publico: [] as string[],
-    funcionalidades: [] as string[], funcionalidadeOutra: '',
-    identidade: '', conteudo: '',
-    prazo: '', investimento: ''
   });
 
   // Carregamento inicial moderno
@@ -43,7 +40,6 @@ export default function BriefingPage() {
       fields: (
         <div className="space-y-4">
           <input type="text" placeholder="Nome da empresa/profissional" className="w-full p-4 rounded-xl bg-accent border border-border focus:border-purple-600 outline-none transition-all" value={formData.empresa} onChange={e => setFormData({...formData, empresa: e.target.value})} />
-          <input type="text" placeholder="Segmento de atuação" className="w-full p-4 rounded-xl bg-accent border border-border focus:border-purple-600 outline-none transition-all" value={formData.segmento} onChange={e => setFormData({...formData, segmento: e.target.value})} />
           <input type="text" placeholder="Contato (WhatsApp/E-mail)" className="w-full p-4 rounded-xl bg-accent border border-border focus:border-purple-600 outline-none transition-all" value={formData.contato} onChange={e => setFormData({...formData, contato: e.target.value})} />
         </div>
       )
@@ -68,97 +64,12 @@ export default function BriefingPage() {
         </div>
       )
     },
-    {
-      title: 'Quem você quer atingir?',
-      fields: (
-        <div className="grid gap-3">
-          {['Clientes locais', 'Pacientes', 'Empresas/parceiros', 'Público nacional/internacional'].map(item => (
-            <label key={item} className={`p-4 rounded-xl border cursor-pointer transition-all flex items-center gap-3 ${formData.publico.includes(item) ? 'border-purple-600 bg-purple-600/10' : 'border-border bg-accent'}`}>
-              <input type="checkbox" className="hidden" checked={formData.publico.includes(item)} onChange={() => {
-                const news = formData.publico.includes(item) ? formData.publico.filter(i => i !== item) : [...formData.publico, item];
-                setFormData({...formData, publico: news});
-              }} />
-              <div className={`w-5 h-5 rounded border flex items-center justify-center ${formData.publico.includes(item) ? 'bg-purple-600 border-purple-600' : 'border-muted-foreground'}`}>
-                {formData.publico.includes(item) && <CheckCircle2 className="w-4 h-4 text-white" />}
-              </div>
-              {item}
-            </label>
-          ))}
-        </div>
-      )
-    },
-    {
-      title: 'Funcionalidades Desejadas',
-      fields: (
-        <div className="grid gap-3">
-          {['Formulário de contato', 'Integração WhatsApp', 'Agendamento online', 'Loja virtual', 'Blog/notícias'].map(item => (
-            <label key={item} className={`p-4 rounded-xl border cursor-pointer transition-all flex items-center gap-3 ${formData.funcionalidades.includes(item) ? 'border-purple-600 bg-purple-600/10' : 'border-border bg-accent'}`}>
-              <input type="checkbox" className="hidden" checked={formData.funcionalidades.includes(item)} onChange={() => {
-                const news = formData.funcionalidades.includes(item) ? formData.funcionalidades.filter(i => i !== item) : [...formData.funcionalidades, item];
-                setFormData({...formData, funcionalidades: news});
-              }} />
-              <div className={`w-5 h-5 rounded border flex items-center justify-center ${formData.funcionalidades.includes(item) ? 'bg-purple-600 border-purple-600' : 'border-muted-foreground'}`}>
-                {formData.funcionalidades.includes(item) && <CheckCircle2 className="w-4 h-4 text-white" />}
-              </div>
-              {item}
-            </label>
-          ))}
-          <input type="text" placeholder="Outra funcionalidade..." className="w-full p-4 rounded-xl bg-accent border border-border outline-none mt-2" value={formData.funcionalidadeOutra} onChange={e => setFormData({...formData, funcionalidadeOutra: e.target.value})} />
-        </div>
-      )
-    },
-    {
-      title: 'Identidade Visual',
-      fields: (
-        <div className="grid gap-3">
-          {['Sim, já possuo logo e cores', 'Não, preciso que seja criado'].map(item => (
-            <label key={item} className={`p-4 rounded-xl border cursor-pointer transition-all flex items-center gap-3 ${formData.identidade === item ? 'border-purple-600 bg-purple-600/10' : 'border-border bg-accent'}`}>
-              <input type="radio" name="identidade" className="hidden" checked={formData.identidade === item} onChange={() => setFormData({...formData, identidade: item})} />
-              <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${formData.identidade === item ? 'bg-purple-600 border-purple-600' : 'border-muted-foreground'}`}>
-                {formData.identidade === item && <div className="w-2 h-2 rounded-full bg-white" />}
-              </div>
-              {item}
-            </label>
-          ))}
-        </div>
-      )
-    },
-    {
-      title: 'Conteúdo do Site',
-      fields: (
-        <div className="grid gap-3">
-          {['Sim, já possuo textos e imagens', 'Não, preciso de ajuda com o conteúdo'].map(item => (
-            <label key={item} className={`p-4 rounded-xl border cursor-pointer transition-all flex items-center gap-3 ${formData.conteudo === item ? 'border-purple-600 bg-purple-600/10' : 'border-border bg-accent'}`}>
-              <input type="radio" name="conteudo" className="hidden" checked={formData.conteudo === item} onChange={() => setFormData({...formData, conteudo: item})} />
-              <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${formData.conteudo === item ? 'bg-purple-600 border-purple-600' : 'border-muted-foreground'}`}>
-                {formData.conteudo === item && <div className="w-2 h-2 rounded-full bg-white" />}
-              </div>
-              {item}
-            </label>
-          ))}
-        </div>
-      )
-    },
-    {
-      title: 'Prazo e Investimento',
-      fields: (
-        <div className="space-y-4">
-          <input type="text" placeholder="Prazo ideal para lançamento (ex: 30 dias)" className="w-full p-4 rounded-xl bg-accent border border-border focus:border-purple-600 outline-none transition-all" value={formData.prazo} onChange={e => setFormData({...formData, prazo: e.target.value})} />
-          <input type="text" placeholder="Faixa de investimento pretendida" className="w-full p-4 rounded-xl bg-accent border border-border focus:border-purple-600 outline-none transition-all" value={formData.investimento} onChange={e => setFormData({...formData, investimento: e.target.value})} />
-        </div>
-      )
-    }
   ];
 
   const validateStep = () => {
     switch (currentStep) {
-      case 0: return formData.empresa && formData.segmento && formData.contato;
-      case 1: return formData.objetivos.length > 0 || formData.objetivoOutro;
-      case 2: return formData.publico.length > 0;
-      case 3: return formData.funcionalidades.length > 0 || formData.funcionalidadeOutra;
-      case 4: return formData.identidade !== '';
-      case 5: return formData.conteudo !== '';
-      case 6: return formData.prazo && formData.investimento;
+      case 0: return formData.empresa.trim() !== '' && formData.contato.trim() !== '';
+      case 1: return formData.objetivos.length > 0 || formData.objetivoOutro.trim() !== '';
       default: return false;
     }
   };
@@ -167,7 +78,9 @@ export default function BriefingPage() {
     if (validateStep()) {
       setCurrentStep(currentStep + 1);
       setShowError(false);
+      setErrorMessage('');
     } else {
+      setErrorMessage('Por favor, preencha os campos obrigatórios antes de prosseguir.');
       setShowError(true);
     }
   };
@@ -180,27 +93,39 @@ export default function BriefingPage() {
       subject: `Briefing YourPage - ${formData.empresa}`,
       message: `
         Empresa: ${formData.empresa}
-        Segmento: ${formData.segmento}
         Contato: ${formData.contato}
         Plano: ${selectedPlan}
         Objetivos: ${formData.objetivos.join(', ')} ${formData.objetivoOutro}
-        Público: ${formData.publico.join(', ')}
-        Funcionalidades: ${formData.funcionalidades.join(', ')} ${formData.funcionalidadeOutra}
-        Identidade: ${formData.identidade}
-        Conteúdo: ${formData.conteudo}
-        Prazo: ${formData.prazo}
-        Investimento: ${formData.investimento}
       `
     };
 
+    // Verificação de segurança: Impede o envio se as chaves ainda forem os placeholders
+    if (['service_qr7o6ep', 'template_h0w6qga', 'Y60wPSyk2dezEILgd'].some(key => key.includes('YOUR_'))) {
+      setErrorMessage('Configuração incompleta: As chaves do EmailJS precisam ser preenchidas no código.');
+      setShowError(true);
+      setIsSending(false);
+      return;
+    }
+
     try {
-      // Aqui você integraria com o EmailJS ou sua API própria
-      // Exemplo: await emailjs.send('service_id', 'template_id', templateParams, 'user_id');
-      
-      console.log("Enviando dados:", templateParams);
-      
-      // Simulação de delay de rede
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Integração com a API do EmailJS para envio ao Gmail
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: 'service_qr7o6ep', // Cadastre seu Gmail no emailjs.com e coloque o ID aqui
+          template_id: 'template_h0w6qga', // Crie um template e coloque o ID aqui
+          user_id: 'Y60wPSyk2dezEILgd', // Sua chave pública do EmailJS
+          template_params: {
+            to_email: 'yourpage.business.tech@gmail.com',
+            ...templateParams,
+          },
+        }),
+      });
+
+      if (!response.ok) throw new Error('Falha ao enviar e-mail');
 
       // Efeito sonoro e animação de sucesso
       const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
@@ -209,6 +134,7 @@ export default function BriefingPage() {
 
       setTimeout(() => navigate('/'), 4000);
     } catch (error) {
+      setErrorMessage('Falha na conexão ao enviar. Verifique sua internet ou tente novamente mais tarde.');
       setShowError(true);
     } finally {
       setIsSending(false);
@@ -314,7 +240,9 @@ export default function BriefingPage() {
               if (validateStep()) {
                 setIsSaved(true);
                 setShowError(false);
+              setErrorMessage('');
               } else {
+              setErrorMessage('Selecione ao menos um objetivo ou descreva um antes de salvar.');
                 setShowError(true);
               }
             }}
@@ -354,7 +282,7 @@ export default function BriefingPage() {
             </div>
             <div className="flex-1">
               <p className="text-sm font-bold text-foreground">Ação necessária</p>
-              <p className="text-xs text-muted-foreground">Preencha os campos obrigatórios para continuar.</p>
+              <p className="text-xs text-muted-foreground">{errorMessage || "Preencha os campos obrigatórios para continuar."}</p>
             </div>
             <button onClick={() => setShowError(false)} className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
               <X className="w-4 h-4" />

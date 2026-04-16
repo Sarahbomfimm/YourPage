@@ -41,6 +41,11 @@ const services = [
 ];
 
 export function ServicesSection() {
+  const handleWhatsAppContact = () => {
+    const message = encodeURIComponent("Olá, gostaria de solicitar um orçamento personalizado.");
+    window.open(`https://wa.me/5582988736580?text=${message}`, '_blank');
+  };
+
   return (
     <section id="servicos" className="py-32 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-600/5 to-transparent"></div>
@@ -105,6 +110,7 @@ export function ServicesSection() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={handleWhatsAppContact}
             className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-shadow cursor-pointer"
           >
             Solicitar orçamento personalizado

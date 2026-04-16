@@ -12,50 +12,32 @@ interface PortfolioItem {
   link?: string;
   mockupDesktop?: string;
   mockupMobile?: string;
+  pdf?: string;
 }
 
 const portfolioItems: PortfolioItem[] = [
   {
     title: 'CyberStore',
     category: 'E-commerce',
-    description: 'Loja de e-commerce de eletrônicos completa com design moderno e alta conversão.',
+    description: 'Plataforma de e-commerce premium com design futurista, múltiplas categorias de eletrônicos, sistema de promoções e integração WhatsApp. Performance otimizada, responsiva e com alta conversão de vendas.',
     image: '/cyberstoreDesk.png',
-    tags: ['E-commerce', 'React', 'Vercel', 'UI/UX'],
+    tags: ['E-commerce', 'Velocidade e Conversão', 'integração com WhatsApp', 'Alta performance'],
     link: 'https://cyber-store-yourpage.vercel.app/',
     
     mockupDesktop: '/cyberstoreDesk.png',
     mockupMobile: '/cyberstorePhone.jpeg'
   },
   {
-    title: 'Justiça e Direito',
-    category: 'Site Profissional',
-    description: 'Plataforma institucional que transmite autoridade e profissionalismo.',
-    image: '',
-    tags: ['Corporativo', 'Minimalista', 'Conversão'],
-    link: '',
-    mockupDesktop: '',
-    mockupMobile: '',
-  },
-  {
-    title: 'Tech Solutions Hub',
-    category: 'Landing Page',
-    description: 'Landing page focada em conversão para captação de leads B2B.',
-    image: 'https://images.unsplash.com/photo-1728598909887-2d983a8889b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWIlMjBkZXNpZ24lMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzcwODY2NzkwfDA&ixlib=rb-4.1.0&q=80&w=1080',
-    tags: ['Alta conversão', 'Analytics', 'Otimizado'],
-    link:'',
-    mockupDesktop: '',
-    mockupMobile: '',
-  },
-  {
-    title: 'Clínica Vita Saúde',
-    category: 'Site + Gestão',
-    description: 'Site institucional com gestão de anúncios Google Ads.',
-    image: 'https://images.unsplash.com/photo-1609941535028-83e3b0291aae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwd2Vic2l0ZSUyMG1vY2t1cCUyMGxhcHRvcHxlbnwxfHx8fDE3NzA5NTIyNTR8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    tags: ['Saúde', 'Agendamento', 'Marketing'],
-    link:'',
-    mockupDesktop: '',
-    mockupMobile: '',
-  },
+    title: 'InspeGov',
+    category: 'Controle de inspeção de UHs',
+    description: 'Desenvolvido para hotéis que exigem alto padrão de qualidade, o InspeGov acompanha inspeções, retrabalhos, responsáveis por cada unidade habitacional e indicadores de desempenho com muito mais precisão e controle.',
+    image: '/inspegov foto.jpeg',
+    tags: ['Operação mais ágil', 'Mais controle e rastreabilidade', 'Gestão em tempo real'],
+    link: 'https://sarahbomfimm.github.io/inspeGov/',
+    mockupDesktop: '/inspegov foto.jpeg',
+    mockupMobile: '/inspegov mobile.jpeg',
+    pdf: '/InspeGov - Sistema de Governança Hoteleira.pdf',
+  }
 ];
 
 export function PortfolioSection() {
@@ -171,19 +153,33 @@ export function PortfolioSection() {
                   ))}
                 </div>
 
-                {selectedItem.link && (
-                  <motion.a
-                    href={selectedItem.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all cursor-pointer"
-                  >
-                    Acessar Projeto Online
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.a>
-                )}
+                <div className="flex flex-wrap gap-3">
+                  {selectedItem.link && (
+                    <motion.a
+                      href={selectedItem.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all cursor-pointer"
+                    >
+                      Acessar Projeto Online
+                      <ArrowRight className="w-5 h-5" />
+                    </motion.a>
+                  )}
+                  {selectedItem.pdf && (
+                    <motion.a
+                      href={selectedItem.pdf}
+                      download
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all cursor-pointer"
+                    >
+                      Baixar Apresentação
+                      <ExternalLink className="w-5 h-5" />
+                    </motion.a>
+                  )}
+                </div>
               </div>
 
               {/* Área de Mockups (Desktop e Mobile) */}
