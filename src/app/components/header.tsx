@@ -89,7 +89,7 @@ export function Header() {
             onClick={(e) => handleNavClick(e, '#planos')}
             className="text-foreground/80 hover:text-foreground transition-colors"
           >
-            Planos
+            Orçamentos
           </a>
         </nav>
 
@@ -158,7 +158,7 @@ export function Header() {
                 onClick={(e) => handleNavClick(e, '#planos')}
                 className="text-foreground/80 hover:text-foreground transition-colors py-2"
               >
-                Planos
+                Orçamentos
               </a>
               <button onClick={handleWhatsAppContact} className="mt-4 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium">
                 Falar com especialista

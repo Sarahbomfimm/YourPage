@@ -1,46 +1,49 @@
 import { motion } from 'motion/react';
-import { Check, Sparkles } from 'lucide-react';
+import { Check, Sparkles, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const plans = [
   {
-    name: 'Pacote Growth',
+    name: 'Landing Page Premium',
     description: 'A partir de:',
     price: 'R$ 1.500,00',
     monthly: null,
     features: [
-      'Site completo',
-      'Landing page promocional',
-      'SEO básico + Google Meu Negócio'
+      'Design exclusivo sob medida (Figma)',
+      'Performance 100/100 (PageSpeed)',
+      'SEO técnico estruturado para o Google',
+      'Integração com WhatsApp e CRM',
+      'Responsivo (Mobile First)'
     ],
-    target: 'Clínicas e restaurantes',
+    target: null,
     highlight: false,
   },
   {
-    name: 'Pacote Premium',
+    name: 'Site Institucional / CMS',
     description: 'A partir de:',
-    price: 'R$ 1.800,00',
-    monthly: 'Mensalidade R$400–600',
+    price: 'R$ 2.800,00',
+    monthly: null,
     features: [
-      'Site ou e-commerce simples',
-      'Gestão de anúncios',
-      'Relatórios mensais',
-      'Suporte mensal'
+      'Múltiplas páginas explicativas',
+      'Painel administrativo (CMS) integrado',
+      'Blog ou seção de notícias/portfólio',
+      'Google Analytics & Pixel do Meta',
+      'Treinamento básico de uso'
     ],
-    target: 'Receita recorrente',
+    target: null,
     highlight: true,
   },
   {
-    name: 'Pacote Full',
+    name: 'Sistemas & Plataformas',
     description: 'A partir de:',
-    price: 'R$ 2.500,00',
-    monthly: 'Mensalidade R$600–800',
+    price: 'R$ 5.000,00',
+    monthly: null,
     features: [
-      'Site',
-      'Gestão de anúncios',
-      'Identidade visual',
-      'Posts iniciais',
-      'Suporte mensal'
+      'Área logada / Painel do Cliente',
+      'Banco de dados seguro e escalável',
+      'Integrações com APIs e Webhooks',
+      'Fluxos e lógicas complexas sob medida',
+      'Checkout & Gateway de pagamento'
     ],
     target: null,
     highlight: false,
@@ -68,14 +71,14 @@ export function TestimonialsSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-blue-600/20 mb-6">
             <Sparkles className="w-4 h-4 text-purple-600" />
-            <span className="text-sm">Soluções digitais estratégicas</span>
+            <span className="text-sm">Desenvolvimento de alto nível</span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Conheça <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">nossos planos</span>
+            Formatos de <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Projetos</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Escolha a estratégia ideal para o seu negócio decolar
+            Escolha o modelo ideal para iniciar ou peça um orçamento 100% personalizado
           </p>
         </motion.div>
 
@@ -124,6 +127,37 @@ export function TestimonialsSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Banner de Orçamento Personalizado */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-12 p-8 md:p-10 rounded-2xl bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5 dark:from-blue-900/10 dark:via-purple-900/10 dark:to-blue-900/10 border border-purple-500/20 dark:border-purple-600/30 backdrop-blur-sm relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8"
+        >
+          <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-purple-600/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="absolute -left-10 -top-10 w-40 h-40 bg-blue-600/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div className="relative z-10 max-w-2xl text-center md:text-left">
+            <h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
+              Precisa de um projeto totalmente personalizado?
+            </h3>
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              Tem uma ideia para um software SaaS, dashboard administrativo complexo, portal com integrações de APIs personalizadas ou automações específicas? Nós desenhamos o escopo técnico ideal para o seu negócio decolar.
+            </p>
+          </div>
+
+          <div className="relative z-10 shrink-0 w-full md:w-auto">
+            <button
+              onClick={() => handlePlanSelection('Orçamento Personalizado')}
+              className="cursor-pointer flex items-center justify-center gap-2 w-full md:w-auto px-8 py-4 rounded-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300"
+            >
+              Fazer Briefing Personalizado
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

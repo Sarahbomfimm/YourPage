@@ -1,42 +1,42 @@
 import { motion } from 'motion/react';
-import { Globe, Megaphone, QrCode, Palette, Code, BarChart } from 'lucide-react';
+import { Globe, Database, ShoppingCart, Palette, Code, BarChart } from 'lucide-react';
 
 const services = [
   {
     icon: Globe,
-    title: 'Sites Institucionais',
-    description: 'Sites elegantes e profissionais que transmitem credibilidade e fortalecem sua marca no mercado.',
-    features: ['Design personalizado', 'Responsivo', 'SEO otimizado', 'Integração WhatsApp'],
+    title: 'Criação de Sites Profissionais',
+    description: 'Sites corporativos e institucionais sob medida que transmitem credibilidade e geram autoridade para a sua marca.',
+    features: ['Design exclusivo', 'Responsivo (Mobile First)', 'SEO local estruturado', 'Painel administrativo (CMS)'],
   },
   {
     icon: Code,
-    title: 'Landing Pages',
-    description: 'Páginas focadas em conversão, ideais para campanhas, lançamentos e captação de leads.',
-    features: ['Alta conversão', 'Carregamento rápido', 'A/B Testing', 'Analytics integrado'],
+    title: 'Landing Pages Premium',
+    description: 'Páginas focadas em conversão, otimizadas para carregamento ultra-rápido (menos de 1 segundo) e alta taxa de vendas.',
+    features: ['Design focado em conversão', 'Performance 100/100', 'Formulários inteligentes', 'Pixel Meta & Google Analytics'],
   },
   {
-    icon: QrCode,
-    title: 'Cardápio Digital',
-    description: 'Cardápios digitais modernos com QR Code, perfeitos para restaurantes e estabelecimentos.',
-    features: ['QR Code personalizado', 'Fácil atualização', 'Design atrativo', 'Sem instalação'],
+    icon: ShoppingCart,
+    title: 'Desenvolvimento de E-commerce',
+    description: 'Lojas virtuais modernas com catálogos dinâmicos, checkout simplificado em uma página e painel administrativo intuitivo.',
+    features: ['Checkout integrado (Pix/Cartão)', 'Gestão de estoque simples', 'Cálculo de frete automático', 'Notificações por WhatsApp'],
   },
   {
-    icon: Megaphone,
-    title: 'Gestão de Anúncios',
-    description: 'Campanhas estratégicas no Google e redes sociais para atrair mais clientes.',
-    features: ['Google Ads', 'Meta Ads', 'Relatórios', 'ROI otimizado'],
+    icon: Database,
+    title: 'Sistemas Web sob Medida',
+    description: 'Desenvolvimento de aplicações complexas, painéis administrativos, controle de dados, dashboards e SaaS.',
+    features: ['Banco de dados seguro', 'Área logada para usuários', 'Integrações via API/Webhooks', 'Automações de processos'],
   },
   {
     icon: Palette,
-    title: 'Identidade Visual',
-    description: 'Criação de marca completa: logo, cores, tipografia e manual de identidade visual.',
-    features: ['Logo profissional', 'Paleta de cores', 'Manual de marca', 'Materiais gráficos'],
+    title: 'Design de Interface (UI/UX)',
+    description: 'Prototipação no Figma baseada na experiência do usuário para validar ideias e fluxos antes de iniciar o código.',
+    features: ['Layouts modernos no Figma', 'Protótipos navegáveis', 'Design System exclusivo', 'Foco total em usabilidade'],
   },
   {
     icon: BarChart,
-    title: 'Consultoria Digital',
-    description: 'Estratégias personalizadas para maximizar seus resultados no ambiente digital.',
-    features: ['Análise de mercado', 'Plano estratégico', 'Acompanhamento', 'Otimização contínua'],
+    title: 'Otimização & SEO Técnico',
+    description: 'Auditoria de código e melhoria de velocidade de sites lentos para subir posições nas buscas orgânicas do Google.',
+    features: ['Auditoria de PageSpeed', 'Refatoração de código antigo', 'SEO On-Page estruturado', 'Instalação de Tags de Analytics'],
   },
 ];
 
