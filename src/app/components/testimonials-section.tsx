@@ -9,7 +9,7 @@ const plans = [
     price: 'R$ 1.500,00',
     monthly: null,
     features: [
-      'Design exclusivo sob medida (Figma)',
+      'Design exclusivo sob medida',
       'Performance 100/100 (PageSpeed)',
       'SEO técnico estruturado para o Google',
       'Integração com WhatsApp e CRM',

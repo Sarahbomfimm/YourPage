@@ -1,7 +1,22 @@
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Instagram, Linkedin, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, MessageCircle } from 'lucide-react';
 
 export function Footer() {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.querySelector(targetId);
+    if (element) {
+      const headerOffset = window.innerWidth < 768 ? 70 : 85;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <footer className="relative border-t border-border">
       <div className="container mx-auto px-6 py-16">
@@ -29,13 +44,6 @@ export function Footer() {
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.1, y: -2 }}
-                href="#"
-                className="w-10 h-10 rounded-full bg-accent hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 flex items-center justify-center transition-colors hover:text-white"
-              >
-                <Linkedin className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1, y: -2 }}
                 href="https://wa.me/5582988736580?text=Ol%C3%A1%2C%20vim%20pelo%20site%20YourPage."
                 target="_blank"
                 rel="noopener noreferrer"
@@ -51,22 +59,22 @@ export function Footer() {
             <h4 className="font-semibold mb-4">Links Rápidos</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#beneficios" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#beneficios" onClick={(e) => handleNavClick(e, '#beneficios')} className="text-muted-foreground hover:text-foreground transition-colors">
                   Benefícios
                 </a>
               </li>
               <li>
-                <a href="#servicos" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#servicos" onClick={(e) => handleNavClick(e, '#servicos')} className="text-muted-foreground hover:text-foreground transition-colors">
                   Serviços
                 </a>
               </li>
               <li>
-                <a href="#portfolio" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#portfolio" onClick={(e) => handleNavClick(e, '#portfolio')} className="text-muted-foreground hover:text-foreground transition-colors">
                   Portfólio
                 </a>
               </li>
               <li>
-                <a href="#planos" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#planos" onClick={(e) => handleNavClick(e, '#planos')} className="text-muted-foreground hover:text-foreground transition-colors">
                   Planos
                 </a>
               </li>

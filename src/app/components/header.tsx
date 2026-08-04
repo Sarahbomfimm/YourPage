@@ -12,20 +12,23 @@ export function Header() {
   };
 
   const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault(); // Impede o salto padrão do navegador
-    setIsMenuOpen(false); // Fecha o menu
+    e.preventDefault();
+    setIsMenuOpen(false);
 
-    const element = document.querySelector(targetId);
-    if (element) {
-      const headerOffset = 85; // Altura aproximada do header para não tapar o conteúdo
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+    // Timeout garante que o fechamento do menu mobile no Framer Motion não cancele o scroll no celular
+    setTimeout(() => {
+      const element = document.querySelector(targetId);
+      if (element) {
+        const headerOffset = window.innerWidth < 768 ? 70 : 85;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   const handleScrollToTop = () => {
