@@ -1,7 +1,10 @@
-import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Instagram, MessageCircle } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Mail, Phone, MapPin, Instagram, MessageCircle, X, ShieldCheck, FileText } from 'lucide-react';
 
 export function Footer() {
+  const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
     const element = document.querySelector(targetId);
@@ -112,12 +115,18 @@ export function Footer() {
               © 2026 YourPage. Todos os direitos reservados.
             </p>
             <div className="flex gap-6 text-sm text-muted-foreground">
-              <a href="#" className="hover:text-foreground transition-colors">
+              <button
+                onClick={() => setActiveModal('privacy')}
+                className="hover:text-foreground transition-colors cursor-pointer"
+              >
                 Política de Privacidade
-              </a>
-              <a href="#" className="hover:text-foreground transition-colors">
+              </button>
+              <button
+                onClick={() => setActiveModal('terms')}
+                className="hover:text-foreground transition-colors cursor-pointer"
+              >
                 Termos de Uso
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -125,6 +134,141 @@ export function Footer() {
 
       {/* Decorative gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600"></div>
+
+      {/* Modais de Política de Privacidade e Termos de Uso */}
+      <AnimatePresence>
+        {activeModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveModal(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-card border border-purple-600/30 rounded-3xl shadow-2xl p-6 md:p-8"
+            >
+              <button
+                onClick={() => setActiveModal(null)}
+                className="absolute top-5 right-5 p-2 rounded-full bg-accent hover:bg-accent/80 transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {activeModal === 'privacy' ? (
+                <div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-purple-600/10 border border-purple-600/20 flex items-center justify-center text-purple-600">
+                      <ShieldCheck className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold">Política de Privacidade</h3>
+                      <p className="text-sm text-muted-foreground">Última atualização: Agosto de 2026</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6 text-muted-foreground leading-relaxed text-sm md:text-base">
+                    <p>
+                      A <strong>YourPage</strong> tem o compromisso de proteger a sua privacidade e os seus dados pessoais, em conformidade com a <strong>Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018)</strong>.
+                    </p>
+
+                    <div>
+                      <h4 className="text-foreground font-semibold text-lg mb-2">1. Coleta de Informações</h4>
+                      <p>
+                        Coletamos informações pessoais que você nos fornece diretamente ao preencher formulários de contato, solicitar briefings de projetos ou entrar em contato via WhatsApp/E-mail. Os dados podem incluir: nome, e-mail, telefone/WhatsApp, nome da empresa e especificações do seu projeto.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-foreground font-semibold text-lg mb-2">2. Uso das Informações</h4>
+                      <p>Utilizamos os dados coletados exclusivamente para:</p>
+                      <ul className="list-disc pl-5 mt-2 space-y-1">
+                        <li>Elaborar propostas comerciais e orçamentos personalizados.</li>
+                        <li>Executar o desenvolvimento de sites, landing pages e sistemas contratados.</li>
+                        <li>Prestar suporte técnico e atendimento pós-venda.</li>
+                        <li>Melhorar continuamente a experiência do usuário em nossas plataformas.</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="text-foreground font-semibold text-lg mb-2">3. Compartilhamento e Proteção de Dados</h4>
+                      <p>
+                        Não vendemos, alugamos ou compartilhamos seus dados pessoais com terceiros para fins de marketing. Adotamos medidas rígidas de segurança técnica e organizacional para proteger seus dados contra acessos não autorizados ou vazamentos.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-foreground font-semibold text-lg mb-2">4. Direitos do Titular</h4>
+                      <p>
+                        Você tem o direito de solicitar a confirmação, acesso, correção ou eliminação dos seus dados pessoais armazenados por nós a qualquer momento. Para exercer seus direitos, entre em contato através do e-mail <strong>yourpage.business.tech@gmail.com</strong>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-blue-600/10 border border-blue-600/20 flex items-center justify-center text-blue-600">
+                      <FileText className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold">Termos de Uso</h3>
+                      <p className="text-sm text-muted-foreground">Última atualização: Agosto de 2026</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6 text-muted-foreground leading-relaxed text-sm md:text-base">
+                    <p>
+                      Bem-vindo à <strong>YourPage</strong>. Ao acessar nosso site ou utilizar nossos serviços de desenvolvimento de software e sites, você concorda com os seguintes Termos de Uso.
+                    </p>
+
+                    <div>
+                      <h4 className="text-foreground font-semibold text-lg mb-2">1. Escopo dos Serviços</h4>
+                      <p>
+                        A YourPage desenvolve landing pages de alta conversão, sites institucionais, lojas virtuais e sistemas web personalizados. Todas as especificações, prazos e entregáveis são definidos formalmente no briefing e contrato de prestação de serviços.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-foreground font-semibold text-lg mb-2">2. Propriedade Intelectual</h4>
+                      <p>
+                        Todo o conteúdo deste site (textos, código-fonte, identidade visual e materiais promocionais) é de propriedade exclusiva da YourPage. Os projetos desenvolvidos para clientes tornam-se de propriedade do cliente após a quitação integral do projeto contratado, respeitando as licenças de código aberto e bibliotecas utilizadas.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-foreground font-semibold text-lg mb-2">3. Responsabilidades do Usuário</h4>
+                      <p>
+                        O usuário compromete-se a fornecer informações verdadeiras e atualizadas nos formulários de contato e briefing, garantindo que possui os direitos sobre marcas, imagens e textos disponibilizados para a criação do seu site.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-foreground font-semibold text-lg mb-2">4. Modificações dos Termos</h4>
+                      <p>
+                        A YourPage reserva-se o direito de alterar estes Termos de Uso periodicamente. Alterações significativas serão refletidas nesta página.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-8 pt-6 border-t border-border flex justify-end">
+                <button
+                  onClick={() => setActiveModal(null)}
+                  className="px-6 py-2.5 rounded-xl bg-purple-600 text-white font-semibold hover:bg-purple-700 transition-colors cursor-pointer"
+                >
+                  Entendi e Concordo
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 }

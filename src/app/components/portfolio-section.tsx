@@ -18,11 +18,11 @@ interface PortfolioItem {
 
 const portfolioItems: PortfolioItem[] = [
   {
-    title: 'Pajuçara Praia Hotel',
+    title: 'Grupo Pajuçara Hotéis',
     category: 'Blog & Painel Administrativo CMS',
-    description: 'Blog exclusivo desenvolvido para o hotel 4 estrelas Pajuçara Praia Hotel em Maceió-AL. Reúne informações completas do hotel, artigos, guia de experiências, FAQ interativo e um Painel Administrativo completo para a equipe do hotel gerenciar publicações, imagens e conteúdos em tempo real.',
+    description: 'Blog exclusivo desenvolvido para o Grupo Pajuçara Hotéis em Maceió-AL, englobando o Pajuçara Praia Hotel e o Pajuçara Express. Reúne informações completas dos hotéis, artigos, guia de experiências, FAQ interativo e um Painel Administrativo completo para a equipe gerenciar publicações e conteúdos em tempo real.',
     image: '/pajucaraDesk1.jpg',
-    tags: ['Hotelaria 4 Estrelas', 'Blog & Notícias', 'Painel Administrativo CMS', 'FAQ & Experiências'],
+    tags: ['Grupo Hoteleiro', 'Blog & Notícias', 'Painel Administrativo CMS', 'FAQ & Experiências'],
     link: 'https://blog.pajucarahotel.com.br/',
     mockupDesktops: ['/pajucaraDesk1.jpg', '/pajucaraDesk2.png', '/pajucaraDesk3.png'],
     mockupMobile: '/pajucaraMobile.png'

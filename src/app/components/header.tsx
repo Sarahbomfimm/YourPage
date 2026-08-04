@@ -66,34 +66,22 @@ export function Header() {
         </motion.div>
 
         <nav className="hidden md:flex items-center gap-8">
-          <a
-            href="#beneficios"
-            onClick={(e) => handleNavClick(e, '#beneficios')}
-            className="text-foreground/80 hover:text-foreground transition-colors"
-          >
-            Benefícios
-          </a>
-          <a
-            href="#servicos"
-            onClick={(e) => handleNavClick(e, '#servicos')}
-            className="text-foreground/80 hover:text-foreground transition-colors"
-          >
-            Serviços
-          </a>
-          <a
-            href="#portfolio"
-            onClick={(e) => handleNavClick(e, '#portfolio')}
-            className="text-foreground/80 hover:text-foreground transition-colors"
-          >
-            Portfólio
-          </a>
-          <a
-            href="#planos"
-            onClick={(e) => handleNavClick(e, '#planos')}
-            className="text-foreground/80 hover:text-foreground transition-colors"
-          >
-            Orçamentos
-          </a>
+          {[
+            { name: 'Benefícios', href: '#beneficios' },
+            { name: 'Serviços', href: '#servicos' },
+            { name: 'Portfólio', href: '#portfolio' },
+            { name: 'Orçamentos', href: '#planos' }
+          ].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
+              className="relative text-foreground/80 hover:text-foreground transition-colors py-1 font-medium group cursor-pointer"
+            >
+              <span>{item.name}</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transition-all duration-300 group-hover:w-full shadow-sm shadow-purple-500/50"></span>
+            </a>
+          ))}
         </nav>
 
         <div className="flex items-center gap-4">
@@ -135,34 +123,22 @@ export function Header() {
             className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-lg"
           >
             <nav className="container mx-auto px-6 py-6 flex flex-col gap-4">
-              <a
-                href="#beneficios"
-                onClick={(e) => handleNavClick(e, '#beneficios')}
-                className="text-foreground/80 hover:text-foreground transition-colors py-2"
-              >
-                Benefícios
-              </a>
-              <a
-                href="#servicos"
-                onClick={(e) => handleNavClick(e, '#servicos')}
-                className="text-foreground/80 hover:text-foreground transition-colors py-2"
-              >
-                Serviços
-              </a>
-              <a
-                href="#portfolio"
-                onClick={(e) => handleNavClick(e, '#portfolio')}
-                className="text-foreground/80 hover:text-foreground transition-colors py-2"
-              >
-                Portfólio
-              </a>
-              <a
-                href="#planos"
-                onClick={(e) => handleNavClick(e, '#planos')}
-                className="text-foreground/80 hover:text-foreground transition-colors py-2"
-              >
-                Orçamentos
-              </a>
+              {[
+                { name: 'Benefícios', href: '#beneficios' },
+                { name: 'Serviços', href: '#servicos' },
+                { name: 'Portfólio', href: '#portfolio' },
+                { name: 'Orçamentos', href: '#planos' }
+              ].map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="relative text-foreground/80 hover:text-foreground transition-colors py-2 font-medium group w-max"
+                >
+                  <span>{item.name}</span>
+                  <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ))}
               <button onClick={handleWhatsAppContact} className="mt-4 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium">
                 Falar com especialista
               </button>
